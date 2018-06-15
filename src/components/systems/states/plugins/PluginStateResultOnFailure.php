@@ -1,16 +1,16 @@
 <?php
-namespace tratabor\components\systems\states\plugins;
+namespace jeyroik\extas\components\systems\states\plugins;
 
-use tratabor\components\systems\Plugin;
-use tratabor\components\systems\states\machines\plugins\PluginInitContextSuccess;
-use tratabor\interfaces\systems\IContext;
-use tratabor\interfaces\systems\states\IStateMachine;
-use tratabor\interfaces\systems\states\plugins\IPluginStateResult;
+use jeyroik\extas\components\systems\Plugin;
+use jeyroik\extas\components\systems\states\machines\plugins\PluginInitContextSuccess;
+use jeyroik\extas\interfaces\systems\IContext;
+use jeyroik\extas\interfaces\systems\states\IStateMachine;
+use jeyroik\extas\interfaces\systems\states\plugins\IPluginStateResult;
 
 /**
  * Class PluginStateResultOnFailure
  *
- * @package tratabor\components\systems\states\plugins
+ * @package jeyroik\extas\components\systems\states\plugins
  * @author Funcraft <me@funcraft.ru>
  */
 class PluginStateResultOnFailure extends Plugin implements IPluginStateResult

@@ -3,7 +3,7 @@
   "description": "Plugin for jeyroik StateMachine. Allow to use on failure transition.",
   "autoload": {
     "psr-4": {
-      "tratabor\\": "src/"
+      "jeyroik\\extas\\": "src/"
     }
   }
 }
