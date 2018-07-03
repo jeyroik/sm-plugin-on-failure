@@ -1,22 +1,26 @@
 {
-  "title": "On failure",
+  "title": "On Failure",
+  "description": "Allow to use on success/on failure transitions.",
   "schema": "1.0",
   "plugins": [
     {
-      "class": "jeyroik\\extas\\components\\systems\\states\\plugins\\PluginStateRunAfterOnFailure",
-      "stage": "state.run.after"
-    },
-    {
       "class": "jeyroik\\extas\\components\\systems\\states\\plugins\\PluginStateRunNextOnFailure",
       "stage": "state.run.next"
+    },
+    {
+      "class": "jeyroik\\extas\\components\\systems\\states\\plugins\\PluginStateRunAfterOnFailure",
+      "stage": "state.run.after"
     }
   ],
   "extensions": [
     {
       "class": "jeyroik\\extas\\components\\systems\\states\\extensions\\ExtensionContextOnFailure",
-      "interface": "jeyroik\\extas\\components\\systems\\states\\extensions\\ExtensionContextOnFailure",
+      "interface": "jeyroik\\extas\\interfaces\\systems\\contexts\\IContextOnFailure",
       "subject": "jeyroik\\extas\\interfaces\\systems\\IContext",
-      "methods": ["setSuccess", "setFail"]
+      "methods": [
+        "setFail",
+        "setSuccess"
+      ]
     }
   ]
 }
