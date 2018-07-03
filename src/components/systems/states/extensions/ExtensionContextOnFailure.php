@@ -3,6 +3,7 @@ namespace jeyroik\extas\components\systems\states\extensions;
 
 use jeyroik\extas\components\systems\Extension;
 use jeyroik\extas\components\systems\states\machines\plugins\PluginInitContextSuccess;
+use jeyroik\extas\interfaces\systems\contexts\IContextOnFailure;
 use jeyroik\extas\interfaces\systems\IContext;
 
 /**
@@ -11,15 +12,16 @@ use jeyroik\extas\interfaces\systems\IContext;
  * @package jeyroik\extas\components\systems\states\extensions
  * @author Funcraft <me@funcraft.ru>
  */
-class ExtensionContextOnFailure extends Extension
+class ExtensionContextOnFailure extends Extension implements IContextOnFailure
 {
     /**
      * @var array
      */
-    protected $methods = [
+    public $methods = [
         'setFail' => ExtensionContextOnFailure::class,
         'setSuccess' => ExtensionContextOnFailure::class
     ];
+    public $subject = IContext::class;
 
     /**
      * @param IContext|null $context
@@ -28,7 +30,7 @@ class ExtensionContextOnFailure extends Extension
      */
     public function setFail(IContext &$context = null)
     {
-        $context->updateItem(PluginInitContextSuccess::CONTEXT__SUCCESS, false);
+        $context[PluginInitContextSuccess::CONTEXT__SUCCESS] = false;
 
         return $context;
     }
@@ -40,7 +42,7 @@ class ExtensionContextOnFailure extends Extension
      */
     public function setSuccess(IContext &$context = null)
     {
-        $context->updateItem(PluginInitContextSuccess::CONTEXT__SUCCESS, true);
+        $context[PluginInitContextSuccess::CONTEXT__SUCCESS] = true;
 
         return $context;
     }

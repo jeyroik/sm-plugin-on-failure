@@ -5,7 +5,7 @@ use jeyroik\extas\components\systems\Plugin;
 use jeyroik\extas\components\systems\states\machines\plugins\PluginInitContextSuccess;
 use jeyroik\extas\interfaces\systems\IContext;
 use jeyroik\extas\interfaces\systems\states\IStateMachine;
-use jeyroik\extas\interfaces\systems\states\plugins\IPluginStateResult;
+use jeyroik\extas\interfaces\systems\states\plugins\IPluginStateRunAfter;
 
 /**
  * Class PluginStateResultOnFailure
@@ -13,8 +13,10 @@ use jeyroik\extas\interfaces\systems\states\plugins\IPluginStateResult;
  * @package jeyroik\extas\components\systems\states\plugins
  * @author Funcraft <me@funcraft.ru>
  */
-class PluginStateResultOnFailure extends Plugin implements IPluginStateResult
+class PluginStateRunAfterOnFailure extends Plugin implements IPluginStateRunAfter
 {
+    public $preDefinedStage = IStateMachine::STAGE__STATE_RUN_AFTER;
+
     /**
      * @param IStateMachine $machine
      * @param IContext $context
@@ -23,11 +25,6 @@ class PluginStateResultOnFailure extends Plugin implements IPluginStateResult
      */
     public function __invoke(IStateMachine &$machine, IContext $context)
     {
-        try {
-            $isSuccess = $context->readItem(PluginInitContextSuccess::CONTEXT__SUCCESS)->getValue();
-            return $isSuccess;
-        } catch (\Exception $e) {
-            return true;
-        }
+        return $context[PluginInitContextSuccess::CONTEXT__SUCCESS];
     }
 }

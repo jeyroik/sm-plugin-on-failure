@@ -1,0 +1,22 @@
+{
+  "title": "On failure",
+  "schema": "1.0",
+  "plugins": [
+    {
+      "class": "jeyroik\\extas\\components\\systems\\states\\plugins\\PluginStateRunAfterOnFailure",
+      "stage": "state.run.after"
+    },
+    {
+      "class": "jeyroik\\extas\\components\\systems\\states\\plugins\\PluginStateRunNextOnFailure",
+      "stage": "state.run.next"
+    }
+  ],
+  "extensions": [
+    {
+      "class": "jeyroik\\extas\\components\\systems\\states\\extensions\\ExtensionContextOnFailure",
+      "interface": "jeyroik\\extas\\components\\systems\\states\\extensions\\ExtensionContextOnFailure",
+      "subject": "jeyroik\\extas\\interfaces\\systems\\IContext",
+      "methods": ["setSuccess", "setFail"]
+    }
+  ]
+}
