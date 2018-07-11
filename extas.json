@@ -19,7 +19,9 @@
       "subject": "jeyroik\\extas\\interfaces\\systems\\IContext",
       "methods": [
         "setFail",
-        "setSuccess"
+        "setSuccess",
+        "setFailOn",
+        "setSuccessOn"
       ]
     }
   ]

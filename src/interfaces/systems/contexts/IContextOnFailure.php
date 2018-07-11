@@ -24,4 +24,20 @@ interface IContextOnFailure
      * @return IContext
      */
     public function setSuccess(IContext &$context = null);
+
+    /**
+     * @param callable|mixed $clause
+     * @param IContext|null $context
+     *
+     * @return IContext
+     */
+    public function setFailOn($clause, IContext &$context = null);
+
+    /**
+     * @param callable|mixed $clause
+     * @param IContext|null $context
+     *
+     * @return IContext
+     */
+    public function setSuccessOn($clause, IContext &$context = null);
 }

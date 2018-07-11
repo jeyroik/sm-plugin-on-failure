@@ -19,8 +19,11 @@ class ExtensionContextOnFailure extends Extension implements IContextOnFailure
      */
     public $methods = [
         'setFail' => ExtensionContextOnFailure::class,
-        'setSuccess' => ExtensionContextOnFailure::class
+        'setSuccess' => ExtensionContextOnFailure::class,
+        'setFailOn' => ExtensionContextOnFailure::class,
+        'setSuccessOn' => ExtensionContextOnFailure::class
     ];
+
     public $subject = IContext::class;
 
     /**
@@ -43,6 +46,34 @@ class ExtensionContextOnFailure extends Extension implements IContextOnFailure
     public function setSuccess(IContext &$context = null)
     {
         $context[PluginInitContextSuccess::CONTEXT__SUCCESS] = true;
+
+        return $context;
+    }
+
+    /**
+     * @param callable|mixed $clause
+     * @param IContext|null $context
+     *
+     * @return IContext
+     */
+    public function setFailOn($clause, IContext &$context = null)
+    {
+        $isFail = is_callable($clause) ? $clause($context) : $clause;
+        $isFail ? $this->setFail($context) : $this->setSuccess($context);
+
+        return $context;
+    }
+
+    /**
+     * @param callable|mixed $clause
+     * @param IContext|null $context
+     *
+     * @return IContext
+     */
+    public function setSuccessOn($clause, IContext &$context = null)
+    {
+        $isSuccess = is_callable($clause) ? $clause($context) : $clause;
+        $isSuccess ? $this->setSuccess($context) : $this->setFail($context);
 
         return $context;
     }
