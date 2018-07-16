@@ -3,6 +3,7 @@ namespace jeyroik\extas\components\systems\states\plugins;
 
 use jeyroik\extas\components\systems\Plugin;
 use jeyroik\extas\components\systems\states\machines\plugins\PluginInitContextSuccess;
+use jeyroik\extas\interfaces\systems\contexts\IContextOnFailure;
 use jeyroik\extas\interfaces\systems\IContext;
 use jeyroik\extas\interfaces\systems\states\IStateMachine;
 use jeyroik\extas\interfaces\systems\states\plugins\IPluginStateRunAfter;
@@ -19,12 +20,12 @@ class PluginStateRunAfterOnFailure extends Plugin implements IPluginStateRunAfte
 
     /**
      * @param IStateMachine $machine
-     * @param IContext $context
+     * @param IContext|IContextOnFailure $context
      *
      * @return bool
      */
     public function __invoke(IStateMachine &$machine, IContext $context)
     {
-        return $context[PluginInitContextSuccess::CONTEXT__SUCCESS];
+        return $context->isSuccess();
     }
 }

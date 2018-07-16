@@ -21,10 +21,21 @@ class ExtensionContextOnFailure extends Extension implements IContextOnFailure
         'setFail' => ExtensionContextOnFailure::class,
         'setSuccess' => ExtensionContextOnFailure::class,
         'setFailOn' => ExtensionContextOnFailure::class,
-        'setSuccessOn' => ExtensionContextOnFailure::class
+        'setSuccessOn' => ExtensionContextOnFailure::class,
+        'isSuccess' => ExtensionContextOnFailure::class
     ];
 
     public $subject = IContext::class;
+
+    /**
+     * @param IContext|null $context
+     *
+     * @return bool
+     */
+    public function isSuccess(IContext &$context = null): bool
+    {
+        return $context[PluginInitContextSuccess::CONTEXT__SUCCESS];
+    }
 
     /**
      * @param IContext|null $context

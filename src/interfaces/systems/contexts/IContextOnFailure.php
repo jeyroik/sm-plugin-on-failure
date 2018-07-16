@@ -40,4 +40,11 @@ interface IContextOnFailure
      * @return IContext
      */
     public function setSuccessOn($clause, IContext &$context = null);
+
+    /**
+     * @param IContext|null $context
+     *
+     * @return bool
+     */
+    public function isSuccess(IContext &$context = null): bool;
 }
