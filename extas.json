@@ -21,7 +21,8 @@
         "setFail",
         "setSuccess",
         "setFailOn",
-        "setSuccessOn"
+        "setSuccessOn",
+        "isSuccess"
       ]
     }
   ]
