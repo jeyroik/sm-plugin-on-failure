@@ -16,7 +16,7 @@
     {
       "class": "jeyroik\\extas\\components\\systems\\states\\extensions\\ExtensionContextOnFailure",
       "interface": "jeyroik\\extas\\interfaces\\systems\\contexts\\IContextOnFailure",
-      "subject": "jeyroik\\extas\\interfaces\\systems\\IContext",
+      "subject": "context",
       "methods": [
         "setFail",
         "setSuccess",
